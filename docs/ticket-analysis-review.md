@@ -4,6 +4,36 @@ This document reviews my analysis of Tickets 1–5. Each ticket starts with the 
 
 ---
 
+## 0. Confirmed by the reporter (role-play, 2026-10-13)
+
+Answers from the two role-play rounds in [reporter-questions-roleplay.md](reporter-questions-roleplay.md). Where Round 2 is more specific than Round 1, Round 2 wins.
+
+| Topic | Answer | Round |
+| --- | --- | --- |
+| Deliverable | Design docs for all 5 tickets plus a working demo. No deployment. | 1 |
+| Deadline | Demo day, Friday 2026-11-06 | 1 |
+| Team | Solo | 1 |
+| Required stack | RAG + LangGraph, Python | 1 |
+| Meaning of "graph" (Ticket 5) | The LangGraph agent flow of the chosen project | 1 |
+| Format | No template; the dev decides | 1 |
+| Approver | The mentor | 1 |
+| Data | Public or synthetic only, no company data | 1 |
+| Ticket 3 output | One decision record per choice, including the choices fixed by the course | 2 |
+| Patterns in scope | AI patterns and software architecture patterns | 2 |
+| LLM provider | OpenAI (GPT models) as main; OpenRouter free key as backup, switched by hand | 2 (replaces Round 1 "I don't know") |
+| Budget | $5 per month on the OpenAI key | 2 |
+| Other services | Everything except the LLM runs on the dev's machine | 2 |
+
+Still open:
+
+- What level the demo needs (UI or command line, evaluation of answer quality)
+- When the idea must be approved, and how to submit it
+- What the idea is judged on
+- When Ticket 3 is reviewed (Round 2, Q11 unanswered)
+- Whether the $5 also covers embeddings
+
+---
+
 ## 1. Cross-ticket findings
 
 These issues affect all five tickets, not only one.
@@ -12,9 +42,9 @@ These issues affect all five tickets, not only one.
 | --- | --- | --- | --- |
 | G1 | **No ticket has a deliverable or Definition of Done.** None of them says what the output is (a document, a diagram file, a slide), where it goes, or who approves it. | Missed | Without a DoD, no ticket can be closed objectively. |
 | G2 | **The tickets are a strict chain, but there is no approval gate between them.** T1 → T2 → T3 → T4/T5. If the idea in T1 changes after T2 starts, everything after it is redone. | Missed | A reviewer sign-off after T1 (idea) and after T3 (stack) avoids rework. |
-| G3 | **There is no implementation, evaluation, or demo ticket.** All five tickets are analysis and design. I assumed the final practice ends at design, but "practice what you have been trained for" suggests something gets built. | Possibly wrong assumption | This changes how deep T2–T5 must go. Design-only work can stay high-level. A build needs implementable detail. |
-| G4 | **No constraints are stated**: timeline, team size (solo or group), budget for LLM API calls, allowed models or providers, allowed data. | Missed | These constraints filter the idea in T1 more than "difficulty" does. |
-| G5 | **The ticket order is partly circular.** T5 (graph: nodes, edges, state) assumes a graph-based orchestration framework such as LangGraph, which is a tech-stack decision from T3. T4 "high-level design" and T5 "graph" also overlap. | Missed | T3 has to explicitly decide the orchestration approach, otherwise T5 has no basis. |
+| G3 | **There is no implementation, evaluation, or demo ticket.** All five tickets are analysis and design. I assumed the final practice ends at design, but "practice what you have been trained for" suggests something gets built. | **Confirmed:** a working demo is required, no deploy | T2–T5 need implementable detail, not only high-level design. |
+| G4 | **No constraints are stated**: timeline, team size (solo or group), budget for LLM API calls, allowed models or providers, allowed data. | **Mostly resolved** (see section 0) | These constraints filter the idea in T1 more than "difficulty" does. |
+| G5 | **The ticket order is partly circular.** T5 (graph: nodes, edges, state) assumes a graph-based orchestration framework such as LangGraph, which is a tech-stack decision from T3. T4 "high-level design" and T5 "graph" also overlap. | **Resolved:** LangGraph is required, and the graph is its agent flow | T5 has a basis; T4 and T5 overlap still needs a decision. |
 
 ```mermaid
 flowchart LR
@@ -40,9 +70,9 @@ flowchart LR
 
 #### Revised analysis (after review)
 
-1. **What it asks:** Choose one final-practice project idea that applies the course content, and get it approved.
-2. **What's ambiguous:** The criteria for "suitable", whether the project must be built (and to what level), and the constraints (deadline, team, stack, data).
-3. **First step:** Confirm the expected deliverable and constraints with the reporter, then shortlist 3–5 ideas from the course syllabus and score them against a rubric.
+1. **What it asks:** Choose one final-practice project idea that uses RAG and LangGraph in Python on public or synthetic data, buildable solo as a working demo by 2026-11-06, and get the mentor's approval.
+2. **What's ambiguous:** What the idea is judged on, what level the demo needs, and when the idea must be approved.
+3. **First step:** Shortlist 3–5 ideas that need both retrieval and an agent flow, score them against a rubric, and send them to the mentor for approval.
 
 #### Missed
 
@@ -60,7 +90,7 @@ flowchart LR
 #### Possibly wrong assumptions
 
 - *"Harder is better."* The final practice is usually judged on **applying the course correctly**, not on difficulty. A medium-sized idea that uses RAG + agent + evaluation well beats an ambitious one that is half finished.
-- *"I choose alone."* The ticket says "choose the most suitable idea", but the reporter or mentor probably has to approve it (reserve question in the role-play doc).
+- *"I choose alone."* **Confirmed wrong:** the mentor approves the idea.
 
 ### Ticket 2: Analyze features and workflows
 
@@ -103,9 +133,9 @@ flowchart LR
 
 #### Revised analysis (after review)
 
-1. **What it asks:** Choose the technologies and patterns that meet the requirements from Ticket 2.
-2. **What's ambiguous:** Whether any part of the stack is mandated, what criteria to compare options by, and whether the orchestration approach (needed by Ticket 5) is decided here.
-3. **First step:** Confirm which parts of the stack are fixed, then map each Ticket 2 requirement to candidate technologies and patterns and compare 2–3 options per decision.
+1. **What it asks:** Write one decision record for each technology and pattern choice (AI and software architecture), including the choices fixed by the course, to meet the Ticket 2 requirements.
+2. **What's ambiguous:** Which sections a decision record must have, when Ticket 3 is reviewed, and whether the $5/month budget also covers embeddings.
+3. **First step:** List the decisions (LLM, embeddings, vector DB, orchestration, evaluation and tracing, UI, architecture), write the records for the fixed choices first, and estimate monthly cost against $5.
 
 #### Missed
 
@@ -124,7 +154,7 @@ flowchart LR
 
 #### Possibly wrong assumption
 
-- *"I am free to choose the stack."* Trainings often mandate a language, framework, or LLM provider. Confirm before researching (see Q3).
+- *"I am free to choose the stack."* **Confirmed wrong:** Python, RAG, and LangGraph are required; OpenAI is the main LLM with OpenRouter as a manual backup; everything else must run locally on a $5/month LLM budget.
 
 ### Ticket 4: Draw diagrams for workflows, high-level design, and features
 
@@ -176,7 +206,7 @@ flowchart LR
 
 #### Missed
 
-- **What "graph" means is assumed, not confirmed.** My analysis assumes a **LangGraph-style agent graph** (StateGraph). It could also mean a knowledge graph (GraphRAG) or simply a system dependency graph. This must be confirmed (see Q4).
+- **What "graph" means is assumed, not confirmed.** My analysis assumes a **LangGraph-style agent graph** (StateGraph). It could also mean a knowledge graph (GraphRAG) or simply a system dependency graph. **Confirmed:** it means the LangGraph agent flow.
 - If it is an agent graph, "nodes, edges, state" is incomplete. A complete design also covers:
   - **State schema**: typed fields, which node reads or writes each field, and reducers for list or message fields
   - **Node catalogue**: responsibility, inputs, outputs, LLM vs deterministic, tools used
@@ -202,8 +232,9 @@ flowchart LR
 | --- | --- | --- |
 | T1 | `docs/01-idea-selection.md`: shortlist, scored rubric, recommended idea | Reporter approves the idea |
 | T2 | `docs/02-features-workflows.md`: personas, user stories with AC, MoSCoW, NFRs, workflows | Every Must feature has acceptance criteria and a flow including error paths |
-| T3 | `docs/03-tech-stack.md` + ADRs | Every choice is traced to a requirement, and the orchestration approach is decided |
+| T3 | `docs/03-tech-stack.md` + one decision record per choice (fixed ones included) | Every choice, AI and software pattern, is traced to a requirement and fits the $5/month, local-only constraints |
 | T4 | `docs/04-diagrams.md` (Mermaid) | Use case, workflow, C4 L1/L2, and sequence diagrams render in GitLab |
+| Demo | Working demo running locally | Runs end to end on demo day, 2026-11-06 |
 | T5 | `docs/05-graph-design.md` (Mermaid) | State schema, node catalogue, conditional edges, END/loop limits, and HITL points are defined |
 
 ---
@@ -219,3 +250,5 @@ Each question asks one thing. The same set is used in [reporter-questions-rolepl
 > 3. Which parts of the stack are fixed: the course topics to use (for example RAG, agents, LangGraph), the language, the LLM provider, or none?
 > 4. In Ticket 5, does "graph" mean the agent flow (nodes, edges, state), a knowledge graph, or something else?
 > 5. Is there a sample from a previous batch, or a template, that I can follow for the format?
+
+All five were answered in the role-play; see section 0.
