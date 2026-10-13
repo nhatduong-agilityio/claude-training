@@ -26,13 +26,14 @@ My first draft of questions for Tickets 1–5 broke the first rule: each questio
 | # | Question | Rule applied | Unblocks |
 | --- | --- | --- | --- |
 | Q1 | At the end of the course, what do you expect to see: only design documents, a working demo, or a deployed product? | Options | All tickets (how deep to go) |
-| Q2 | When is it due, and do I work alone or in a team? | Narrow the scope | T1 (feasibility) |
-| Q3 | Must the project use specific course topics (for example RAG, agents, LangGraph) or a specific language or LLM provider? | Narrow the scope | T1, T3 |
+| Q2 | When is the final practice due? | Narrow the scope | T1 (feasibility) |
+| Q3 | Which parts of the stack are fixed: the course topics to use (for example RAG, agents, LangGraph), the language, the LLM provider, or none? | Options | T1, T3 |
 | Q4 | In Ticket 5, does "graph" mean the agent flow (nodes, edges, state), a knowledge graph, or something else? | Options | T5, T4 |
 | Q5 | Is there a sample from a previous batch, or a template, that I can follow for the format? | Baseline + evidence | All tickets (format and DoD) |
 
 Questions kept in reserve, in case the answers above leave gaps:
 
+- Do I work alone or in a team?
 - Who approves the idea before I move to Ticket 2?
 - Is an API key or budget provided for LLM calls?
 - Can I use real company data, or only public or synthetic data?
@@ -59,8 +60,8 @@ Record the conversation:
 | # | Dev question | Reporter answer | Enough? (Yes / Partly / No) | Follow-up question if not |
 | --- | --- | --- | --- | --- |
 | Q1 | Design documents, working demo, or deployed product? | | | |
-| Q2 | Deadline? Alone or in a team? | | | |
-| Q3 | Required course topics, language, or LLM provider? | | | |
+| Q2 | When is it due? | | | |
+| Q3 | Which parts of the stack are fixed? | | | |
 | Q4 | "Graph" in Ticket 5 means? | | | |
 | Q5 | Sample or template from a previous batch? | | | |
 
@@ -69,7 +70,7 @@ Example of a filled round (sample answers, used only to show the flow):
 | # | Reporter answer | Enough? | Follow-up |
 | --- | --- | --- | --- |
 | Q1 | "A working demo, it doesn't need to be deployed." | Partly | "Does the demo need automated tests or an evaluation report?" |
-| Q2 | "Two weeks, alone." | Yes | |
+| Q2 | "In two weeks." | Yes | |
 | Q3 | "It must use RAG and LangGraph. Language is your choice." | Partly | "Which LLM provider, and is an API key provided?" |
 | Q4 | "The LangGraph flow." | Yes | |
 | Q5 | "No sample. Markdown in the repo is fine." | Partly | "Who reviews it, and is there a check after Ticket 1?" |
