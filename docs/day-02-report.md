@@ -14,6 +14,26 @@ Day 02 covered four activities: clarifying tickets with the reporter, running an
 
 ---
 
+## Summary
+
+1. **Claude's theories, right or wrong, and how I know:** 9 theories, each settled by a test, a command, or the reporter's answer.
+   - **Right:** the bug's cause (the browser submits a single-line input on Enter); the expired OpenAI key; that the server only reads `.env` when it starts; what "graph" means in Ticket 5; and that the failing test fails because of the bug.
+   - **Wrong:** the two other bug hypotheses (a key handler in the app, and Shift not reaching the page); "the practice might be design only"; and the made-up role-play answers ("two weeks", "language is your choice").
+2. **Where setup from scratch got stuck:** install and startup went smoothly; it got stuck at the first chat message. The blockers were a placeholder OpenAI key, then an expired one, and LangSmith failing without a clear error. Why these were hard to spot: startup looks healthy, failed runs return HTTP 200, the placeholder key is logged as "set", the README doesn't mention restarting, and the token names don't match.
+3. **Most effective role-play questions:**
+   - "Which parts of the stack are fixed?"
+   - "OpenAI, or another provider?"
+   - "Is the $5 per month or for the whole practice?"
+
+   They worked because each asks one thing, offers options, and follows up on vague answers. What didn't work: sending all 9 questions at once, and combining two questions in one.
+4. **What Claude did well, and what it got wrong:**
+   - **Did well:** it proved claims instead of just asserting them. It reproduced the bug before explaining it, tested every hypothesis, owned up to its own test mistake, and added a control test.
+   - **Got wrong or was overconfident:** first drafts didn't match the format and scope I asked for. It combined several questions in one, dropped my 3-sentence analysis, copied the example ticket into a document, summarized commands instead of recording them, and invented role-play answers. It also pushed the failing test to `generative-ai` without checking that I wanted that repo included.
+
+The sections below give the details and evidence for each point.
+
+---
+
 ## 1. Which of Claude's theories were right, which were wrong, and how I know
 
 A theory counted as right or wrong only when a command, test, or answer from the reporter settled it.
