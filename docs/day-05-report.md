@@ -17,14 +17,15 @@ Items marked TODO need results that are not recorded in this session yet.
 
 ## Summary
 
-1. **`CLAUDE.md`:** 34 lines (the limit was about 40). It covers the commands, conventions from git history and
-   4 "never do" rules, each with its basis in the repo. The 4 rules are recommendations until the
-   team confirms them (TODO).
+1. **`CLAUDE.md`:** 34 lines when first committed, 31 after review (the limit was about 40). It
+   covers the commands, conventions from git history and 3 "never do" rules, each with its basis in
+   the repo. The rules are now final, with "(recommend)" removed. Who approved them: TODO.
 2. **Loaded or not:** a new session's `/context` shows **Memory files: 1 file · 838 tokens**. The
    session where the file was created did not load it: `CLAUDE.md` is read only at session start.
 3. **Which line changed behavior:** TODO, waiting on the check in a new session (section 2).
-   **Cut** at review: the separate "confirm the target repo" rule (merged into rule 1). Also
-   rejected: a markdownlint config (kept as TODO) and the branch name `day05/nhat-duong` (renamed).
+   **Cut:** the `generative-ai/` rule (rule 1), removed after the first commit; reason: TODO. Before
+   that, the "confirm the target repo" rule was merged into it. Also rejected: a markdownlint config
+   (kept as TODO) and the branch name `day05/nhat-duong` (renamed).
 4. **What survives `/compact`:** `CLAUDE.md` (reloaded in full), decisions, constraints, branch and
    commit state, and pending tasks. Lost: full file contents, screenshots, exact outputs and most
    detail from earlier days (table in section 3).
@@ -55,12 +56,15 @@ rules with no basis in the repo (force push, CI).
 
 ### "Never do" rules
 
-| # | Rule | Basis | Team approval |
-| --- | --- | --- | --- |
-| 1 | Never edit, commit or push under `generative-ai/` from this repo; confirm which repo a git command targets | `.git/info/exclude`; day-02-report §4 | TODO |
-| 2 | Never commit directly to `main` | Every change since `f8f573b` went through an MR | TODO |
-| 3 | Never write secrets into docs; name the variable only | `docs/setup-log-generative-ai.md` | TODO |
-| 4 | Never present guessed or simulated answers as confirmed facts | day-02-report §1 and §4 | TODO |
+| Rule in `87d652e` | Basis | After review |
+| --- | --- | --- |
+| Never edit, commit or push under `generative-ai/` from this repo; confirm which repo a git command targets | `.git/info/exclude`; day-02-report §4 | **Cut** (reason: TODO). The intro still says `generative-ai/` is a separate clone with its own remote |
+| Never commit directly to `main` | Every change since `f8f573b` went through an MR | Kept as rule 1 |
+| Never write secrets into docs; name the variable only | `docs/setup-log-generative-ai.md` | Kept as rule 2 |
+| Never present guessed or simulated answers as confirmed facts | day-02-report §1 and §4 | Kept as rule 3 |
+
+The heading changed from "Never do (recommend: team to confirm)" to "Never do", and the
+"(recommend)" markers were removed. Who approved the rules, and when: TODO.
 
 ---
 
@@ -72,19 +76,20 @@ rules with no basis in the repo (force push, CI).
 | `/context` in a new session | **Memory files: 1 file · 838 tokens**, Messages 10 tokens, 28.1k tokens in total |
 | `/memory` | Auto-memory on. Lists project instructions `./CLAUDE.md` and user instructions `~/.claude/CLAUDE.md` |
 | Does `~/.claude/CLAUDE.md` exist? | No. `/memory` only shows where it would go, so the one loaded file is `./CLAUDE.md` |
-| Size | 34 lines, 2,070 bytes. 838 tokens is under 0.1% of the context window |
+| Size | 34 lines, 2,070 bytes when measured (now 31 lines). 838 tokens is under 0.1% of the context window |
 
 **Line that changed behavior:** TODO. Planned check in a new session (no history, only `CLAUDE.md`):
 
 1. Ask "I want to add a Day 05 report here. What branch and commit message should I use?" If it answers
    `docs/<slug>` and `docs: …` without reading `git log`, the Conventions lines changed behavior.
-2. Ask it to "commit this straight to main". If it refuses and cites rule 2, that rule changed behavior.
+2. Ask it to "commit this straight to main". If it refuses and cites rule 1, that rule changed behavior.
 
 This report follows the Conventions lines (file name, header, branch, commit type). It was written in
 the same long session that wrote `CLAUDE.md`, though, so it does not prove the file caused that.
 
-**Line cut:** the separate "confirm which repo a git command targets" rule, merged into rule 1
-because the two overlapped. No line has been removed after use yet.
+**Line cut:** the whole `generative-ai/` rule, removed during review after the first commit.
+Reason: TODO. Earlier, at the draft stop, the separate "confirm which repo a git command targets"
+rule had been merged into it because the two overlapped.
 
 ---
 
@@ -157,7 +162,7 @@ with its context intact.
 
 | Item | Status |
 | --- | --- |
-| `CLAUDE.md` compact and verified, "never do" rules approved by the team | Compact and verified; team approval TODO |
+| `CLAUDE.md` compact and verified, "never do" rules approved by the team | Done: 31 lines, 3 final rules. Who approved: TODO |
 | `/context` shows the file loaded; `/memory` viewed | Done |
 | Compaction gain/loss table | Done (section 3) |
 | Rewind experiment, checked with git and tests | Done (section 4; checksum instead of tests) |
@@ -166,7 +171,7 @@ with its context intact.
 
 ## Open items
 
-- Team approval of the 4 "never do" rules; then remove "(recommend)" from `CLAUDE.md`.
+- Record who approved the 3 "never do" rules and why the `generative-ai/` rule was cut.
 - Markdown lint config: team decision (TODO in `CLAUDE.md`).
 - Push `docs/day-05-claude-md` and open an MR with `CLAUDE.md` and this report.
 - From Day 04: hunk comment and plan-mode example (TODO in the Day 04 report); close generative-ai
