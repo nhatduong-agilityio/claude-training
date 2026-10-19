@@ -85,6 +85,7 @@ Started `pnpm dev:server` and `pnpm dev:web`. Then, in a fresh session limited t
 | Console | 1 error at page load, not investigated (TODO) |
 
 Two pieces of setup friction:
+
 - Playwright MCP refused to save a screenshot outside the session's project ("outside allowed roots"). It wrote to
   `generative-ai/.playwright-mcp/` instead.
 - That folder was **not** in deep-agents' `.gitignore`, so it was deleted after copying the screenshot. Now ignored

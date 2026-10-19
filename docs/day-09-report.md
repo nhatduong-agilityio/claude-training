@@ -92,6 +92,7 @@ From the [GitHub Actions docs](https://code.claude.com/docs/en/github-actions) a
 | App permissions | One shared set, incl. Contents, Issues, PRs, Workflows (read/write). GitHub doesn't allow accepting only a subset |
 
 Status: **done.**
+
 - **Install:** the dev ran `/install-github-app` twice. The first run stopped after installing the App; the second set `CLAUDE_CODE_OAUTH_TOKEN` and pushed the workflow branch.
 - **Workflow PR:** I opened [PR #4](https://github.com/nhatduong-agilityio/deep-agents/pull/4) and added `timeout-minutes: 15` to both jobs. It was merged as `0557091`.
 - **First run on PR #4 itself:** skipped with *"workflow file must … have identical content to the version on the repository's default branch"*. This is expected until the file is on `main`.
@@ -114,6 +115,7 @@ issues, all fixed before the PR. Then [PR #6](https://github.com/nhatduong-agili
 | 1 | "No issues found" | **Correct, but shallow** | The final code has 0 Critical and 0 Warning per the subagent's 3rd round. But 11 Optional gaps are still open (e.g. `export HUSKY=0`, `xargs`, `cd --`), and the review mentions none of them | None needed. Kept as a TODO list in the PR report |
 
 Honest assessment:
+
 - The automatic review is cheap ($0.11, 3 turns) and catches nothing a reviewer must act on here.
 - In 3 turns it can't have exercised a 250-line shell parser the way the subagent did, with about 260 probe commands across 3 rounds.
 - It never saw the earlier buggy versions, so it's unknown whether it would have caught the newline or `#` bypass (TODO: test it on a deliberately broken commit).
@@ -132,9 +134,13 @@ Honest assessment:
 
 ### `/goal` run
 
-`claude -p '/goal `pnpm format:check` exits 0 for the whole repo; `git diff --stat` shows changes only in
-apps/web/src/theme.css and reports/T-FS-00-report.md; `pnpm --filter web test` still passes. Do not commit. Stop after
-8 turns.'` with only the needed tools allowed.
+Run with only the needed tools allowed:
+
+```bash
+claude -p '/goal `pnpm format:check` exits 0 for the whole repo; `git diff --stat` shows changes only in
+apps/web/src/theme.css and reports/T-FS-00-report.md; `pnpm --filter web test` still passes. Do not commit.
+Stop after 8 turns.'
+```
 
 | Check | Result |
 | --- | --- |
