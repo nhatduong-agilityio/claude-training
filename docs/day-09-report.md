@@ -91,19 +91,33 @@ From the [GitHub Actions docs](https://code.claude.com/docs/en/github-actions) a
 | Cost | GitHub Actions minutes + API tokens (or subscription usage with an OAuth token). Cap runs with `--max-turns` and a workflow timeout |
 | App permissions | One shared set, incl. Contents, Issues, PRs, Workflows (read/write). GitHub doesn't allow accepting only a subset |
 
-Status: **TODO (dev).** Run `/install-github-app` from `generative-ai/` and select the `@claude` and review workflows.
-After the workflow PR is merged, test with `@claude hello` on an issue (`gh run list` → success).
+Status: **done.**
+- **Install:** the dev ran `/install-github-app` twice. The first run stopped after installing the App; the second set `CLAUDE_CODE_OAUTH_TOKEN` and pushed the workflow branch.
+- **Workflow PR:** I opened [PR #4](https://github.com/nhatduong-agilityio/deep-agents/pull/4) and added `timeout-minutes: 15` to both jobs. It was merged as `0557091`.
+- **First run on PR #4 itself:** skipped with *"workflow file must … have identical content to the version on the repository's default branch"*. This is expected until the file is on `main`.
+- **TODO:** `@claude hello` on an issue, which tests the mention workflow. It hasn't been run.
 
 ---
 
 ## 4. `@claude` review on the next PR
 
-TODO. Waits on section 3. Then: open the hook PR from `chore/claude-block-forbidden-command`, wait for the review run,
-and classify every comment.
+The hook went through `/devkit:ship` first: 3 rounds with the `devkit:code-reviewer` subagent found 3 Critical and 11 Warning
+issues, all fixed before the PR. Then [PR #6](https://github.com/nhatduong-agilityio/deep-agents/pull/6) was opened at `8cc78c6`.
 
-| # | Comment (short) | Verdict | Reason | Action |
+| Run | Result |
+| --- | --- |
+| Claude Code Review, run 39231743719 | `success`; 42 s on the runner, 14 s of model time, 3 turns, $0.11 (subscription token) |
+| Output | One PR comment by `claude`: "## Code review — No issues found. Checked for bugs and CLAUDE.md compliance." No inline comments |
+
+| # | Comment | Verdict | Reason | Action |
 | --- | --- | --- | --- | --- |
-| TODO | | | | |
+| 1 | "No issues found" | **Correct, but shallow** | The final code has 0 Critical and 0 Warning per the subagent's 3rd round. But 11 Optional gaps are still open (e.g. `export HUSKY=0`, `xargs`, `cd --`), and the review mentions none of them | None needed. Kept as a TODO list in the PR report |
+
+Honest assessment:
+- The automatic review is cheap ($0.11, 3 turns) and catches nothing a reviewer must act on here.
+- In 3 turns it can't have exercised a 250-line shell parser the way the subagent did, with about 260 probe commands across 3 rounds.
+- It never saw the earlier buggy versions, so it's unknown whether it would have caught the newline or `#` bypass (TODO: test it on a deliberately broken commit).
+- For security-ish code, a dedicated adversarial review is worth more than the default plugin. The automatic review is a useful floor, not a replacement.
 
 ---
 
@@ -114,7 +128,7 @@ and classify every comment.
 | `/goal` | Keep working until a checkable condition holds; a separate small model judges each turn | **Done** (below) |
 | Desktop scheduled task | A recurring local prompt with access to local files, run by the Desktop app | **TODO (dev):** settings below |
 | Routines (cloud) | A saved prompt + repos + connectors, run on Anthropic's cloud by schedule, API or GitHub event | **TODO (dev):** the dev approved creating one, but it can only be set up through `/schedule` or the web (below) |
-| `@claude` in GitHub Actions | Review every PR automatically, or answer `@claude` | TODO (sections 3–4) |
+| `@claude` in GitHub Actions | Review every PR automatically, or answer `@claude` | **Done**: review fired on PR #6 (sections 3–4); `@claude` mention not tried yet |
 
 ### `/goal` run
 
@@ -162,14 +176,15 @@ It's read-only and needs no write permissions.
 
 | Item | Status |
 | --- | --- |
-| Ship one hook as a PR | Branch pushed and fully tested; PR waits for the Action (TODO) |
+| Ship one hook as a PR | Done: [PR #6](https://github.com/nhatduong-agilityio/deep-agents/pull/6) via `/devkit:ship`, with a [report artifact](https://claude.ai/artifact/NN5zFRXfEeer76Dk84RD3R) |
 | `/goal` on a bounded task | Done (PR #3, merged `054d441`) |
 | Desktop scheduled task (morning briefing) | TODO (dev; settings in section 5) |
 | Routines overview | Done (section 5); routine creation TODO (dev) |
-| `@claude` GitHub Action; review fires on the next PR; comments evaluated | TODO (dev runs `/install-github-app`) |
+| `@claude` GitHub Action; review fires on the next PR; comments evaluated | Done (sections 3–4) |
 
 ## Open items
 
-- Dev: `/install-github-app`, then I open the hook PR and evaluate the `@claude` review.
+- Try `@claude hello` on an issue. (PR #6 was merged by the dev with `gh pr merge`.)
+- TODO: test whether the automatic review catches a deliberately broken commit.
 - Dev: create the Routine and the Desktop task (section 5). (PR #2 and #3 merged by the dev with `gh pr merge`: `eab1160`, `054d441`.)
 - TODO: check the `/goal` evaluator verdict in an interactive session.

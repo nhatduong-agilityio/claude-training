@@ -122,7 +122,7 @@ Rejected:
 - Verify: same checks as Phase 5.
 
 ### Phase 9 — `@claude` GitHub Action (Day 09)
-- [ ] Run `/install-github-app` for `nhatduong-agilityio/deep-agents` (installs the Claude GitHub App, a workflow PR and
+- [x] Run `/install-github-app` for `nhatduong-agilityio/deep-agents` (installs the Claude GitHub App, a workflow PR and
       the repo secret). Refer to the secret **by name only** (`ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN`). TODO: confirm which one it sets
 - [x] Before merging the workflow PR, check who can trigger it on a public repo (TODO: verify that the action
       ignores users without write access) and add a `paths`/actor guard if needed
@@ -142,8 +142,8 @@ Rejected:
   Then live: ask the session to `git commit --no-verify` and it is blocked with the reason shown.
 
 ### Phase 11 — Day 09 PR and `@claude` review evaluation
-- [ ] Commit (`chore(claude): add block-forbidden-command hook`), **ask before push**, `gh pr create --base main`
-- [ ] Wait for the review workflow. Classify every `@claude` comment as valid / nitpick / wrong, with the reason.
+- [x] Commit (`chore(claude): add block-forbidden-command hook`), **ask before push**, `gh pr create --base main`
+- [x] Wait for the review workflow. Classify every `@claude` comment as valid / nitpick / wrong, with the reason.
       Fix the valid ones in follow-up commits
 - Verify: `gh run list --branch chore/claude-block-forbidden-command` → review run `success`; the classification table
   covers 100 % of its comments (`gh pr view --comments` count matches).
