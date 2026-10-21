@@ -48,7 +48,7 @@ Defaults in this plan (change them before approving if needed):
 - Claude in Chrome setup (from the course notes):
   - Install the extension from the Chrome Web Store (Chrome or Edge, v1.0.36+).
   - Accept the "Claude wants to use your browser" prompt, or run `/chrome` to connect.
-  - It needs a direct Pro, Max, Team or Enterprise plan. TODO: confirm this account's plan.
+  - It needs a direct Pro, Max, Team or Enterprise plan. Confirmed: Claude Pro, direct (see `docs/day-11-report.md` section 2).
 - This session has no `mcp__claude-in-chrome__*` tools yet. The `claude-in-chrome` skill is listed and must be loaded
   before using its tools. GIF recording exists only in Claude in Chrome; Playwright MCP gives screenshots only.
 - Playwright MCP is installed at user scope and was used end to end on Day 08. The Day 11 skills list it for devs
