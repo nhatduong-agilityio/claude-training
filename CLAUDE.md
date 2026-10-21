@@ -1,12 +1,15 @@
 # claude-training
 
-Training log for the Claude Code course (Developer role): Markdown reports only, no app code.
+Training log for the Claude Code course (Developer role): Markdown reports, plus small training-only example
+apps under `examples/` (no build, no dependencies).
 `generative-ai/` is a separate clone with its own GitLab remote; it is ignored only by the local
 `.git/info/exclude`, not by `.gitignore`. Work on that app follows `generative-ai/CLAUDE.md`.
 
 ## Commands
 
-- No install, build, test or run step: no package.json, Makefile or CI in this repo.
+- No install, build or test step: no package.json, Makefile or CI in this repo.
+- Run the Day 11 example app: `python3 -m http.server 8011 -d examples/feedback-board`, then open
+  <http://localhost:8011>.
 - Markdown check (not configured, TODO: team to agree on a config): `npx markdownlint-cli2 "docs/*.md"`.
   With default rules it currently fails on MD013 (line length) everywhere and MD024 in
   `docs/ticket-analysis-review.md`.
@@ -22,6 +25,8 @@ Training log for the Claude Code course (Developer role): Markdown reports only,
   Up to Day 05 it was one GitLab MR per branch (`Merge branch '<branch>' into 'main'` +
   `See merge request nhat.duong/claude-training!<n>`); the GitLab MCP is currently down.
 - Every PR links a devkit PR report artifact.
+- `examples/<kebab-case>/`: training-only apps (plain HTML/CSS/JS, no dependencies), each with a README and its run
+  command. Not production code.
 - Write in English. Anything not verified is marked `TODO`; simulated role-play is labelled "simulated".
 
 ## Never do
