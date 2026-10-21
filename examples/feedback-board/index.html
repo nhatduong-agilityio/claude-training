@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feedback board</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Feedback board</h1>
+        <p id="counter" aria-live="polite">No messages yet</p>
+        <p id="latest" class="muted"></p>
+      </header>
+
+      <form id="feedback-form" novalidate>
+        <label>Name <input id="name" name="name" autocomplete="off" /></label>
+        <span class="error" id="name-error"></span>
+
+        <label>Email <input id="email" name="email" type="email" autocomplete="off" /></label>
+        <span class="error" id="email-error"></span>
+
+        <label>
+          Message <span class="muted">(Enter sends, Shift+Enter adds a line)</span>
+          <!-- maxlength is above MAX_MESSAGE (500) so the "Keep it under" error can be triggered -->
+          <textarea id="message" name="message" rows="3" maxlength="600"></textarea>
+        </label>
+        <span class="error" id="message-error"></span>
+
+        <button type="submit">Send</button>
+      </form>
+
+      <section aria-label="messages">
+        <input id="filter" type="search" placeholder="Filter by name or text" aria-label="filter" />
+        <p id="empty" class="muted">Nothing here yet. Be the first to leave feedback.</p>
+        <p id="no-match" class="muted" hidden>No messages match the filter.</p>
+        <ul id="cards"></ul>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
