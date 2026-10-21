@@ -1,5 +1,5 @@
 # Day 11: role day (Web) and Developer Checkpoint 3
-Status: in-progress · Source: Claude Code course, Developer track, Day 11 + role-extras setup notes + the Day 11 report template (pasted by the user, 2026-10-20)
+Status: done · Source: Claude Code course, Developer track, Day 11 + role-extras setup notes + the Day 11 report template (pasted by the user, 2026-10-20)
 
 ## Goal
 Build a small example web app inside `claude-training/`, then test it the way a user would, from a Claude Code
@@ -154,7 +154,7 @@ Rejected:
       placeholder is replaced by the value from the definition-of-done table
 - [x] Below the summary, add the detail sections: preconditions, the app, the test script and scoring table, the
       Chrome vs Playwright comparison, the fix loop, what was not done (Mobile, Game, maybe the browser pane) and why
-- [ ] Commit (`docs: add Day 11 report and example feedback app`), **ask before push**, open the PR. Build and publish
+- [x] Commit (`docs: add Day 11 report and example feedback app`), **ask before push**, open the PR. Build and publish
       the PR report artifact (memory rule) with the scrubbed screenshots and link it in the body
 - Verify:
   - `grep -n "\[what\|\[PR link" docs/day-11-report.md` finds no template placeholder.
