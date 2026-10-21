@@ -1,5 +1,5 @@
 # Day 10: review and quality
-Status: in-progress · Source: Claude Code course, Developer track, Day 10 + the Day 10 report template (both pasted by the user, 2026-10-20)
+Status: done · Source: Claude Code course, Developer track, Day 10 + the Day 10 report template (both pasted by the user, 2026-10-20)
 
 ## Goal
 Day 10: score `/code-review` (two effort levels) and ultrareview (`/code-review ultra`) against a known answer key on a
@@ -180,10 +180,10 @@ Rejected:
   Every number traces to an `evidence/` file or PR URL. Anything not run is marked `TODO`.
 
 ### Phase 8 — Day 10 reports PR
-- [ ] Branch `docs/day-10-report`. Update `CLAUDE.md` Conventions to the GitHub PR flow in the same commit as the
+- [x] Branch `docs/day-10-report`. Update `CLAUDE.md` Conventions to the GitHub PR flow in the same commit as the
       report; commit; **ask before push**; `gh pr create --base main`. Build and publish the PR
       report artifact
-- [ ] Ask the dev whether to delete the local `review/seeded-bugs` branch
+- [x] Ask the dev whether to delete the local `review/seeded-bugs` branch
 - Verify: `npx markdownlint-cli2 "docs/day-10-report.md"` shows no rule types beyond the known MD013. The PR URL is
   returned.
 
