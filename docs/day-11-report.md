@@ -100,7 +100,7 @@ on save and delete and `console.warn` on invalid input, so a browser test has co
 | Android emulator | AVD `Medium_Phone_API_36.1`, Chrome for Android |
 | Xcode / iOS Simulator | Not installed (`xcode-select -p` → CommandLineTools; no `simctl`) |
 | Computer use | Works after Accessibility and Screen Recording were granted to **VS Code**, which hosts this CLI session (`claude` ← zsh ← Code); cannot target the emulator (no bundle ID) |
-| Plan type | TODO: not visible from the session |
+| Plan type | Claude Pro, direct subscription (read 2026-10-21 from `~/.claude.json`: `organizationType: claude_pro`, `billingType: stripe_subscription`), which meets Claude in Chrome's plan requirement |
 
 ## 3. The 8-step browser test
 
@@ -168,5 +168,5 @@ and the length check now uses the trimmed text. These came after the Chrome and 
 
 ## Open items
 
-- TODO: confirm the account's plan type for Claude in Chrome.
-- iOS and Game editor need Xcode or an engine install; out of scope for this Mac.
+None. The account's plan type is confirmed (Claude Pro, section 2). iOS and the game editor stay out of scope for
+this Mac: they need Xcode or a game engine installed (section 6).
