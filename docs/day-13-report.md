@@ -23,11 +23,11 @@ each SPEC.
 
 ### What was built
 
-| Ticket   | PR                                                                       | Merge commit | Change                                                                                                           | Tests                                                          |
-| -------- | ------------------------------------------------------------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| E1-02    | [#11](https://github.com/nhatduong-agilityio/deep-agents/pull/11)        | `a4618da`    | The input grows up to 6 lines, then scrolls. It resets after a send, shrinks on delete, and has no resize corner | New `ChatInputAutoGrow.test.tsx`; Playwright heights in Chrome |
-| E1-03    | [#10](https://github.com/nhatduong-agilityio/deep-agents/pull/10)        | `94f81de`    | A single `\n` in an AI reply shows as a line break (`remark-breaks` 4.0.0, exact pin)                            | New `AiMarkdownLineBreaks.test.tsx` (jsdom only)               |
-| Side fix | [#12](https://github.com/nhatduong-agilityio/deep-agents/pull/12) (open) | —            | The root vitest config now excludes `.claude/worktrees/**`                                                       | Root suite 562 tests (209 failed) → 115/115                    |
+| Ticket   | PR                                                                | Merge commit | Change                                                                                                           | Tests                                                          |
+| -------- | ----------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| E1-02    | [#11](https://github.com/nhatduong-agilityio/deep-agents/pull/11) | `a4618da`    | The input grows up to 6 lines, then scrolls. It resets after a send, shrinks on delete, and has no resize corner | New `ChatInputAutoGrow.test.tsx`; Playwright heights in Chrome |
+| E1-03    | [#10](https://github.com/nhatduong-agilityio/deep-agents/pull/10) | `94f81de`    | A single `\n` in an AI reply shows as a line break (`remark-breaks` 4.0.0, exact pin)                            | New `AiMarkdownLineBreaks.test.tsx` (jsdom only)               |
+| Side fix | [#12](https://github.com/nhatduong-agilityio/deep-agents/pull/12) | `1e89c68`    | The root vitest config now excludes `.claude/worktrees/**`                                                       | Root suite 562 tests (209 failed) → 115/115                    |
 
 - After both merges, the web suite went from 94 to 104 tests (all passing) and the root suite stayed at 115/115.
 - Each PR links a devkit PR report artifact.
@@ -77,13 +77,13 @@ This is the honest result, not a claim that the rule was met.
 
 ## 1. Setup
 
-| Item      | Value                                                                                                                                                 |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tickets   | E1-02, E1-03 from `docs/BACKLOG.md` (Epic E1, chat UI)                                                                                                |
-| Tracker   | GitHub issues #8 (E1-02) and #9 (E1-03), created by the coordinator. E1-02 mirrors GitLab #9. E1-03 has no GitLab issue; GitLab #8 is E1-01           |
-| PR target | GitHub `main`. GitLab was unreachable (MCP `ENDPOINT_NOT_FOUND`), and I chose GitHub. Syncing back to GitLab `deep-agents` is a TODO (#16)            |
-| Sessions  | Terminal A: `claude -w e1-02 --permission-mode plan`; terminal B: `claude -w e1-03 --permission-mode plan`; plus the coordinator in `claude-training` |
-| Base      | `0e3e68a` (`main`). It already contains GitLab `deep-agents` (`c42c2db` is an ancestor)                                                               |
+| Item      | Value                                                                                                                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tickets   | E1-02, E1-03 from `docs/BACKLOG.md` (Epic E1, chat UI)                                                                                                      |
+| Tracker   | GitHub issues #8 (E1-02) and #9 (E1-03), created by the coordinator. E1-02 mirrors GitLab #9. E1-03 has no GitLab issue; GitLab #8 is E1-01                 |
+| PR target | GitHub `main`. GitLab was unreachable (MCP `ENDPOINT_NOT_FOUND`), and I chose GitHub. Synced back to GitLab `deep-agents` later the same day (#16, MR !158) |
+| Sessions  | Terminal A: `claude -w e1-02 --permission-mode plan`; terminal B: `claude -w e1-03 --permission-mode plan`; plus the coordinator in `claude-training`       |
+| Base      | `0e3e68a` (`main`). It already contains GitLab `deep-agents` (`c42c2db` is an ancestor)                                                                     |
 
 ## 2. Plan mode in practice
 
@@ -139,19 +139,27 @@ Sources: the git history, and the user messages in the two sessions' transcripts
 What it would take to meet the rule next time: edit the plan in `Ctrl+G` before approving it, and write at least
 one AC, one test case or one line of each PR body by hand.
 
-## 6. Follow-ups
+## 6. Follow-ups (all done, 2026-10-22)
 
-| Issue                                                               | What                                                                                          |
-| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [#12](https://github.com/nhatduong-agilityio/deep-agents/pull/12)   | PR, open: exclude worktrees from the root vitest run                                          |
-| [#13](https://github.com/nhatduong-agilityio/deep-agents/issues/13) | E1-03: check in a real browser with a real model reply; before and after screenshots          |
-| [#14](https://github.com/nhatduong-agilityio/deep-agents/issues/14) | E1-02: re-measure the input on width change; a border token for the cap                       |
-| [#15](https://github.com/nhatduong-agilityio/deep-agents/issues/15) | E1-02: check in Firefox, Safari and at mobile width; a "before" screenshot                    |
-| [#16](https://github.com/nhatduong-agilityio/deep-agents/issues/16) | Sync GitHub `main` back to GitLab `deep-agents`                                               |
-| —                                                                   | Remove the `e1-02` and `e1-03` worktrees when their sessions exit (both are clean and merged) |
+| Item                                                                | What                                                           | Result                                                                                                                                                                               |
+| ------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [#12](https://github.com/nhatduong-agilityio/deep-agents/pull/12)   | Exclude worktrees from the root vitest run                     | Merged `1e89c68`; root suite 115/115 with worktrees present                                                                                                                          |
+| [#14](https://github.com/nhatduong-agilityio/deep-agents/issues/14) | E1-02: re-fit the input on width change; border token; log pin | Closed by [#17](https://github.com/nhatduong-agilityio/deep-agents/pull/17) (`fd63033`). A 40-word line: 98px at 1280px, 146px at 500px. Pin gap 0 (was 24 / 48px)                   |
+| [#13](https://github.com/nhatduong-agilityio/deep-agents/issues/13) | E1-03: real browser, real model reply                          | Closed by #17. Same reply: one row before E1-03, three rows after; list and code block unchanged                                                                                     |
+| [#15](https://github.com/nhatduong-agilityio/deep-agents/issues/15) | E1-02 in Firefox, Safari, mobile width; "before" screenshot    | Closed. Chromium, Firefox (Playwright) and Safari 26.0.1 (`safaridriver`) at 1280 and 375px agree; SPEC updated in [#18](https://github.com/nhatduong-agilityio/deep-agents/pull/18) |
+| [#16](https://github.com/nhatduong-agilityio/deep-agents/issues/16) | Sync GitHub `main` to GitLab `deep-agents`                     | Closed. GitLab MR !158, merge commit `b45cd81`. GitHub is 1 docs commit ahead (#18), left for the next sync                                                                          |
+| —                                                                   | Remove the `e1-02` and `e1-03` worktrees                       | `e1-02` removed; `e1-03` is removed when its session exits                                                                                                                           |
+
+Found while doing the follow-ups:
+
+- The first #14 fix resized the input inside the `ResizeObserver` callback, which logged "ResizeObserver loop completed"
+  (8 times). It now re-fits in the next animation frame (0 errors).
+- `scrollTo({ behavior: 'instant' })` would throw on every keystroke in a browser without `'instant'`, so the pin uses a
+  `.message-log--instant` class instead (code review of #17).
+- Playwright's WebKit build crashes on macOS 26.0.1, so Safari was checked in real Safari through `safaridriver`.
 
 ## Open items
 
 - The rule of the day is only partly met (section 5).
-- PR #12 is waiting for review.
-- E1-03 has not been checked in a real browser (#13).
+- One known gap, recorded in the E1-02 SPEC: if the input grows while a new message is still smooth-scrolling the log,
+  the pin can still be missed.
