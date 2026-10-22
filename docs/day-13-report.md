@@ -132,7 +132,7 @@ Sources: the git history, and the user messages in the two sessions' transcripts
 | Tests (2 files) | Wrote them | None | **Not met** |
 | PR bodies #10, #11 | Wrote them; the coordinator added the report links | Asked for the PR to be created ("yes"; "I change the mode, create PR") | **Not met** |
 | Merges | Resolved the `BACKLOG.md` conflict and ran the checks | Reviewed both PRs, then asked for the merges | Review, not an edit |
-| This report | Wrote it | TODO: your edit before merging | TODO |
+| This report | Wrote it, then fixed 5 findings from a fact-check; filled in this row | Asked Claude to make the edit for me on PR #5 instead of editing it myself | Edit made by Claude at my request — **not met** |
 
 What it would take to meet the rule next time: edit the plan in `Ctrl+G` before approving it, and write at least
 one AC, one test case or one line of each PR body by hand.
