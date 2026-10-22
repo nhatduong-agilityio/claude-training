@@ -54,8 +54,9 @@ each SPEC.
 
 ### Rule of the day: Claude-assisted and human-edited
 
-**Partly met.** Every artifact was Claude-assisted, but only the decisions came from me. Claude wrote all the text,
-and I edited none of it by hand (section 5). This is the honest result, not a claim that the rule was met.
+**Partly met.** Every artifact was Claude-assisted. For the plans, SPECs, tests and PR bodies, only the decisions
+came from me and Claude wrote all the text. The one artifact I edited by hand is this report (`b5b81b9`, section 5).
+This is the honest result, not a claim that the rule was met.
 
 ### Takeaways
 
@@ -133,7 +134,7 @@ Sources: the git history, and the user messages in the two sessions' transcripts
 | Tests (2 files)        | Wrote them                                                            | None                                                                                                                              | **None**                                            |
 | PR bodies #10, #11     | Wrote them; the coordinator added the report links                    | Asked for the PR to be created ("yes"; "I change the mode, create PR")                                                            | **None**                                            |
 | Merges                 | Resolved the `BACKLOG.md` conflict and ran the checks                 | Reviewed both PRs, then asked for the merges                                                                                      | Review, not an edit                                 |
-| This report            | Wrote it, then fixed 5 findings from a fact-check; filled in this row | Asked Claude to make the edit for me on PR #5 instead of editing it myself                                                        | Edit made by Claude at my request — **None**        |
+| This report            | Wrote it, then fixed 5 findings from a fact-check; filled in this row | Edited it by hand in `b5b81b9`: changed the verdict column from "not met" to "None" and aligned the tables                        | **Met** (`b5b81b9`)                                 |
 
 What it would take to meet the rule next time: edit the plan in `Ctrl+G` before approving it, and write at least
 one AC, one test case or one line of each PR body by hand.
