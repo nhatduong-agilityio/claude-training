@@ -194,5 +194,5 @@ regression from my own first commit (`cat < .env*`).
 
 ## Open items
 
-- Merge PR #7 (dev). Delete the local `review/seeded-bugs` branch once ultra is recorded.
+- Merge PR #7 (dev). Delete the local `review/seeded-bugs` branch once ultra is recorded. **Resolved (checked 2026-10-23):** [PR #7](https://github.com/nhatduong-agilityio/deep-agents/pull/7) was merged on 2026-10-21 (`0e3e68a`); the `review/seeded-bugs` branch no longer exists locally, on GitHub or on GitLab.
 - TODO: repeat the comparison on a branch the lead seeds, which removes the self-seeding bias.

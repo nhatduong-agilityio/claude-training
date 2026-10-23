@@ -131,5 +131,5 @@ Not resolved this session.
 ## Open items
 
 - TODO: look at the 1 console error on page load. (`.playwright-mcp/` is now gitignored, `80dbdcc`.)
-- TODO: re-check the health checks on the production Docker image.
+- TODO: re-check the health checks on the production Docker image. **Resolved (checked 2026-10-23):** re-checked on the Docker image on 2026-10-22: `/ok` returns 200 with a token and without one, and `POST /threads` returns 401 without a token. Docs corrected in deep-agents [PR #23](https://github.com/nhatduong-agilityio/deep-agents/pull/23).
 - GitLab MCP: the 401 needs a sign-in or the admin setting (section 5).

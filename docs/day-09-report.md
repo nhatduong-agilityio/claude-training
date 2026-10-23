@@ -191,6 +191,6 @@ It's read-only and needs no write permissions.
 ## Open items
 
 - Try `@claude hello` on an issue. (PR #6 was merged by the dev with `gh pr merge`.)
-- TODO: test whether the automatic review catches a deliberately broken commit.
+- TODO: test whether the automatic review catches a deliberately broken commit. **Resolved (checked 2026-10-23):** answered on Day 14. On the deliberately broken commit `433da2a` (the 6-line input cap set to 5), the automatic review (`claude-review`) passed while the `gate` and `regression` CI jobs failed (CI run 39736447164). The automatic review did not catch it.
 - Dev: create the Routine and the Desktop task (section 5). (PR #2 and #3 merged by the dev with `gh pr merge`: `eab1160`, `054d441`.)
 - TODO: check the `/goal` evaluator verdict in an interactive session.
