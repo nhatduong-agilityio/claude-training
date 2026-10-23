@@ -80,7 +80,7 @@ worked. **Not evidenced:** approving a permission prompt from the phone, because
 | Capstone shipped end to end | Yes: `v0.1.0` released and deployed, with health and smoke evidence |
 | **Day 11** (Checkpoint 3) | **Completed**: all 4 rows evidenced (the role-day row has a Web part and a Mobile and Game part); 3 platform limits recorded as such |
 | **Day 3** | 4 of 6 items evidenced. The **peer swap was simulated** (a real partner's feedback was never recorded), and the takeaways are not a section of the report |
-| **Day 6** (Checkpoint 2) | **Partly completed.** The Day 6 runs are self-reported (nothing from that day is in the repos). Skills shown later with evidence: worktrees (Day 13), `/loop` (Days 10, 14), `/effort` (Day 10), Remote Control (Day 15). **Closed today:** a `loop.md` was written ([deep-agents PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), merge pending), and a PR walkthrough artifact was built ([PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68)). **Still open:** no plan-mode change steered via diff comments, and the walkthrough is not shared with a peer |
+| **Day 6** (Checkpoint 2) | **Partly completed.** The Day 6 runs are self-reported (nothing from that day is in the repos). Skills shown later with evidence: worktrees (Day 13), `/loop` (Days 10, 14), `/effort` (Day 10), Remote Control (Day 15). **Closed today:** a `loop.md` was written and merged ([deep-agents PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), `cb59a14`), and a PR walkthrough artifact was built ([PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68)). **Still open:** no plan-mode change steered via diff comments, and the walkthrough is not shared with a peer |
 
 So the final checkpoint is **not all green**: Day 11 is, Day 3 and Day 6 are not. `evidence/checkpoint-map.md` has every
 row and its evidence; `docs/day-06-report.md` holds the Day 6 notes and the same grades.
@@ -171,7 +171,6 @@ evidenced. The approval is not: a command that is not on the allow list would ha
 ## Open items
 
 - Not done, because each needs the author: the plan-mode diff-comment steering, sharing the PR #11 walkthrough with a peer, the 10-minute demo, a real partner for Day 3's peer swap, and approving a permission prompt from the phone.
-- Merge [deep-agents PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33) (`loop.md`); the Day 6 row counts as merged evidence after that.
 - The final checkpoint is not all green (Days 3 and 6, section "Final checkpoint").
 - The still-open items in section 1.
 - The retro items (#25 to #28) are filed as issues, not fixed.
