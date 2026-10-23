@@ -70,7 +70,7 @@ diff comments, one artifact, one Remote Control steer, one `/loop` run). The evi
 | Course "Introduction to subagents" completed | Self-reported | No certificate or link in the repos |
 | Artifact: PR walkthrough with its own page and share link, shared with a peer | **Partly evidenced** | Built on 2026-10-23: [PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68). The Day 6 original is not among the 50 most recent artifacts (the only 16 October one is "T-1 report", a devkit sample report). Artifacts as a skill are evidenced from Day 7 on (a report per PR, e.g. [E1-02](https://claude.ai/artifact/JrJLquh5ZEyjjuAcKeEbnz)). Sharing with a peer: not done; an artifact stays private until the author shares it |
 | `/loop 15m` on an open PR, `/loop 5m` on a deploy | Self-reported; skill evidenced later | Day 10: `/loop 3m` on PR #7 until `claude-review` passed (`docs/day-10-report.md` §5). Day 14: `/loop` and a Monitor on PR #19 until green (CI run 39736139751) |
-| `loop.md` written for the repo | Evidenced (merge pending) | None existed in claude-training, deep-agents, nhat-kit or `~/.claude`. Written on 2026-10-23 for deep-agents: [PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), all 3 CI checks green, not yet merged when this was written |
+| `loop.md` written for the repo | Evidenced | None existed in claude-training, deep-agents, nhat-kit or `~/.claude`. Written on 2026-10-23 for deep-agents: [PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), all 3 CI checks green, merged as `cb59a14` on 2026-10-23 |
 | Remote Control: a steer from the phone | Self-reported; skill evidenced on Day 15 | `plans/20261022-day-15-review-merge-demo/evidence/phase5-remote-control.md`: a task and a follow-up from the phone. Approving a permission prompt remotely is not evidenced |
 | `ultrathink` and `/effort` compared on one bug | Partly evidenced | Effort: `/code-review low` vs `high` on the same branch (`docs/day-10-report.md` §2 and §5). `ultrathink` one-off: self-reported |
 | Two isolated sessions on two tickets with worktrees, no crosstalk | Evidenced (Day 13) | deep-agents PRs #10 and #11; two `claude -w` worktrees; the crosstalk check in `docs/day-13-report.md` §4. "Watched in agent view": self-reported |
@@ -94,6 +94,6 @@ completed. The missing row is "one plan-mode change steered via diff comments".*
 - **Diff-comment steering (also closes the Day 4 `TODO`):** not done. In plan mode in the Desktop app, comment on one
   hunk of the proposed change and send it; record the session link or a screenshot. It is the one row that keeps
   Checkpoint 2 at "partly completed".
-- **`loop.md`:** written ([PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33)); it counts as merged evidence once the PR is merged.
+- **`loop.md`:** done: written and merged ([PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), `cb59a14`, 2026-10-23).
 - **PR walkthrough artifact:** built ([PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68)); sharing it with a peer is not done.
 - **Session links** (claude.ai/code) for the Day 6 runs would turn the self-reported rows into evidence.
