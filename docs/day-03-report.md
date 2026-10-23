@@ -466,5 +466,5 @@ Merge-conflict exercise from the Git block: TODO, if it was done separately.
 - Close issue #1 by hand on GitLab, with a link to !155.
 - Paste the final description into !155 if that hasn't been done yet.
 - Screenshots (before and after), the Chrome version, Firefox, Safari (including a real Vietnamese keyboard) and mobile: TODO.
-- Possible follow-up tickets: the box doesn't grow taller; sent messages show line breaks on one line.
+- Possible follow-up tickets: the box doesn't grow taller; sent messages show line breaks on one line. **Resolved (checked 2026-10-23):** both shipped: line breaks in sent messages in E1-01 (GitLab MR !157) and the growing box in E1-02 (deep-agents [PR #11](https://github.com/nhatduong-agilityio/deep-agents/pull/11)).
 - Feedback from a real partner: TODO.

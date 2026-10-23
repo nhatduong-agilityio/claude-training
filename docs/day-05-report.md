@@ -201,6 +201,6 @@ picker, which lists the same sessions.
 ## Open items
 
 - Markdown lint config: team decision (TODO in `CLAUDE.md`).
-- Push `docs/day-05-claude-md` and open an MR with `CLAUDE.md` and this report.
+- Push `docs/day-05-claude-md` and open an MR with `CLAUDE.md` and this report. **Resolved (checked 2026-10-23):** merged into GitLab `main` as `c3e44ce` on 2026-10-15.
 - From Day 04: hunk comment and plan-mode example (TODO in the Day 04 report); close generative-ai
-  issues #1 and #8 by hand; GitLab MCP is waiting on an admin setting; E1-02 (#9) is waiting on the BA.
+  issues #1 and #8 by hand; GitLab MCP is waiting on an admin setting; E1-02 (#9) is waiting on the BA. **Update (checked 2026-10-23):** E1-02 is resolved (see the Day 04 report); the hunk comment and plan-mode example are still open.

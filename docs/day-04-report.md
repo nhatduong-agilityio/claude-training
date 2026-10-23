@@ -165,6 +165,6 @@ To do it properly next time: open the diff, comment on the hunk (for example on 
 
 - **Close issue #8 by hand.** "Closes #8" only works on the default branch, and the merge went into `deep-agents`. Issue #1 is still open for the same reason.
 - **GitLab MCP:** sign-in works, but the connection fails. Ask the admin to turn on *Allow access to the MCP server* (GitLab 18.6+), or the feature flags `mcp_server` and `oauth_dynamic_client_registration` (18.3–18.5).
-- **E1-02 (#9, growing input box):** waiting on the BA's answers about the maximum height and the resize corner.
+- **E1-02 (#9, growing input box):** waiting on the BA's answers about the maximum height and the resize corner. **Resolved (checked 2026-10-23):** the BA answered on 2026-10-22 (6 lines, no resize corner) and E1-02 shipped in deep-agents [PR #11](https://github.com/nhatduong-agilityio/deep-agents/pull/11).
 - **Missing from this report (TODO):** plan mode (Shift+Tab) use; a hunk comment.
 - **Follow-up:** add `dist/` to `vitest.config.ts`'s exclude list (found during the bootstrap).

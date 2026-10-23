@@ -182,6 +182,6 @@ of the symbol (not verified).
 ## Open items
 
 - Plugin: keep it with a global binary, or uninstall (section 4).
-- TODO (team): the `langgraph-data` backup command; re-check the health checks on the production Docker image.
-- TODO: mirror to GitLab `deep-agents` everything that went to GitHub: PR #1 (merged), #2, #3 and the hook PR (GitLab MRs not approved this session).
+- TODO (team): the `langgraph-data` backup command; re-check the health checks on the production Docker image. **Partly resolved (checked 2026-10-23):** the health checks were re-checked on the Docker image on 2026-10-22 (`/ok` is 200 without a token there; protected routes return 401), and the docs were corrected in deep-agents [PR #23](https://github.com/nhatduong-agilityio/deep-agents/pull/23). The backup command is still not agreed (a file-level snapshot is documented in `docs/runbook.md` §3; its restore is untested).
+- TODO: mirror to GitLab `deep-agents` everything that went to GitHub: PR #1 (merged), #2, #3 and the hook PR (GitLab MRs not approved this session). **Resolved (checked 2026-10-23):** the merges of PRs #1, #2, #3 and #6 are all inside GitLab `deep-agents`, brought in by the sync MRs !158 and !159 (both 2026-10-22).
 - Trust `generative-ai/` once interactively (`claude` there → accept), so its `permissions.allow` rules apply.
