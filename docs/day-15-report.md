@@ -7,7 +7,7 @@
 - **Plan:** `plans/20261022-day-15-review-merge-demo/plan.md`
 
 Day 15 closed the capstone. The deep-agents chat UI was cross-reviewed from three angles, the same-day gaps were fixed,
-and `v0.1.0` was tagged, released and deployed with Docker. A session was steered from a phone. The retro became owned
+and `v0.1.0` was tagged and released, and its API was deployed with Docker. A session was steered from a phone. The retro became owned
 issues, the playbook was written, and the Day 3, 6 and 11 checklists were mapped to evidence. Checking `docs/` for
 missing reports led to a Day 06 report and a note on every open item in the older reports.
 
@@ -47,6 +47,8 @@ merged with CI green, and `main` stayed green (runs on `f508c24` and `9d829ac`).
 - **Deploy:** the self-hosted Docker path, on this Mac, following the release checklist: a volume snapshot first
   (5.5 MB), the previous image kept as `:pre-6453964` and `:pre-9d829ac`, API first. Health: `/ok` 200 with the token,
   readiness `"graph_id":"agent"`, `POST /threads` 401 without it. `smoke-server` and `smoke-permissions` both pass.
+  The Docker image holds the **API only** (`apps/web/` is in `.dockerignore`). The web UI runs from the tag with Vite on
+  this Mac; no frontend host was deployed, because the release checklist's frontend step was not in the plan.
 - **GitLab:** MR !159 merged by the author as `6d673e8`; `v0.1.0` is in GitLab `deep-agents` too.
 - **Rollback** (written down before "done"): `docker compose down`, set `image: generative-ai-langgraph-api:pre-9d829ac`
   in place of `build: .`, `docker compose up -d`. Only docs, CI, web tests and `scripts/` changed between the two
@@ -77,10 +79,10 @@ worked. **Not evidenced:** approving a permission prompt from the phone, because
 
 | Checklist | Result |
 | --- | --- |
-| Capstone shipped end to end | Yes: `v0.1.0` released and deployed, with health and smoke evidence |
+| Capstone shipped end to end | **API: yes.** `v0.1.0` released and deployed with Docker, with health and smoke evidence. **Web UI: no host.** It runs from the tag with Vite; no frontend host was deployed, so "shipped" holds for the API and the release, not for a hosted UI |
 | **Day 11** (Checkpoint 3) | **Completed**: all 4 rows evidenced (the role-day row has a Web part and a Mobile and Game part); 3 platform limits recorded as such |
 | **Day 3** | 4 of 6 items evidenced. The **peer swap was simulated** (a real partner's feedback was never recorded), and the takeaways are not a section of the report |
-| **Day 6** (Checkpoint 2) | **Partly completed.** The Day 6 runs are self-reported (nothing from that day is in the repos). Skills shown later with evidence: worktrees (Day 13), `/loop` (Days 10, 14), `/effort` (Day 10), Remote Control (Day 15). **Closed today:** a `loop.md` was written and merged ([deep-agents PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), `cb59a14`), and a PR walkthrough artifact was built ([PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68)). **Still open:** no plan-mode change steered via diff comments, and the walkthrough is not shared with a peer |
+| **Day 6** (Checkpoint 2) | **Partly completed.** The Day 6 runs are self-reported (nothing from that day is in the repos). Skills shown later with evidence: worktrees (Day 13), `/loop` (Days 10, 14), `/effort` (Day 10), Remote Control (Day 15). **Closed today:** a `loop.md` was written and merged ([deep-agents PR #33](https://github.com/nhatduong-agilityio/deep-agents/pull/33), `cb59a14`), and a PR walkthrough artifact was built ([PR #11 Walkthrough](https://claude.ai/artifact/2RmBAbrdN2knF7SnHTxr68)). **Still open:** no plan-mode change steered via diff comments, and the walkthrough has been reviewed only by a simulated peer (section 6), not shared with a real one |
 
 So the final checkpoint is **not all green**: Day 11 is, Day 3 and Day 6 are not. `evidence/checkpoint-map.md` has every
 row and its evidence; `docs/day-06-report.md` holds the Day 6 notes and the same grades.
@@ -105,7 +107,33 @@ row and its evidence; `docs/day-06-report.md` holds the Day 6 notes and the same
 | Day 01, Day 12 | No report. The author decided on 2026-10-23 that they are not part of this track |
 | Day 15 | This report |
 
-### Open items in the earlier reports
+### 6. Simulated peer review (2026-10-23)
+
+A fresh Claude instance played the peer. It was given only the text of the PR #11 walkthrough and the demo run-sheet,
+plus read-only access to the public repo, so it tested "can I review this from the page alone?" instead of grading
+work it had helped write. **This is a simulation. It does not count as sharing the walkthrough with a real peer, and
+the rehearsal is not the demo.**
+
+It confirmed the commit hashes, per-file line counts, the merge facts, the follow-up PRs and the CI run. It also found
+problems, all fixed on the two pages:
+
+| Finding | Fix |
+| --- | --- |
+| The review claim ("0 critical, 2 important, 5 minor") has no trace on GitHub: no review comments | The page says the SPEC is the only record and that no second human reviewed the PR |
+| Only 6 of the 7 review findings are accounted for | The page says the SPEC records 6 of 7; the seventh is not recorded |
+| "5 of 5 tests red" was unverified | Re-run in a clean checkout at `28fdef3`: 5 of 5 fail, and the first error is `expected '' to be '37px'`; the page notes the tests were tightened in `807c8d5` |
+| Heights differ: 51/99/171 px on the page, 50/98/170 px in the SPEC | The page explains the 1 px font difference between browsers; the CI tests compare heights |
+| Test counts at merge cannot be checked (no CI yet) | The page says they are the author's report; CI arrived in PR #19 |
+| No links to the diff, the SPEC or the tests; the code was not explained | Links and a "How it works" section added |
+| The BA role read as a real stakeholder | The page says the author acted as BA on this solo track |
+| "Deployed" overstated: the Docker image holds the API only | Page, run-sheet and this report now say the web UI runs from the tag with Vite and no frontend host was deployed |
+
+For the demo run-sheet, it flagged the GitLab and GitHub issue numbering (GitHub's #9 is a different ticket), a
+live test run that cannot fit 90 seconds (the red and green output is now pre-run), a private artifact with no
+fallback, a CI step that takes about 1.5 minutes (now "show the result"), and the need to say out loud what is
+simulated. Its five audience questions, with answers from the evidence, are now in the run-sheet.
+
+## Open items in the earlier reports
 
 Resolved items were marked in place (each now ends with a "Resolved (checked 2026-10-23)" note):
 
@@ -165,12 +193,12 @@ evidenced. The approval is not: a command that is not on the allow list would ha
 | Playbook | Wrote it, then added the step-by-step flow when asked | Edited it by hand: removed 3 of the 4 bullets under Sources (doc revisions 11 to 17; the doc history shows the 3 removed list items) | **Met** (a deletion, not a rewrite) |
 | Day 06 report | Formatted and graded it | The notes are the author's own text | The text is the author's; the grades are Claude's |
 | Old-report notes | Verified and wrote them | Chose to edit the old reports | Choice only — **not met** |
-| PR #11 walkthrough, `loop.md` | Wrote them | None | **Not met** |
+| PR #11 walkthrough, `loop.md` | Wrote them; the walkthrough and the run-sheet were revised after a simulated peer review (section 6) | None | **Not met** |
 | This report | Wrote it | Not hand-edited before it was published | **Not met** |
 
 ## Open items
 
-- Not done, because each needs the author: the plan-mode diff-comment steering, sharing the PR #11 walkthrough with a peer, the 10-minute demo, a real partner for Day 3's peer swap, and approving a permission prompt from the phone.
+- Not done, because each needs the author: the plan-mode diff-comment steering, sharing the PR #11 walkthrough with a real peer (a simulated peer reviewed it), the 10-minute demo (only a rehearsal with a simulated peer was done), a real partner for Day 3's peer swap, and approving a permission prompt from the phone.
 - The final checkpoint is not all green (Days 3 and 6, section "Final checkpoint").
 - The still-open items in section 1.
 - The retro items (#25 to #28) are filed as issues, not fixed.

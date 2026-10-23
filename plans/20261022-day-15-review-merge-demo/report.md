@@ -40,6 +40,9 @@ Plan: `plans/20261022-day-15-review-merge-demo/plan.md` · Dates: 2026-10-22 to 
 - Done: `loop.md` (deep-agents PR #33, CI green); a PR walkthrough artifact (PR #11 Walkthrough); the Day 6 date stated
   as "not recorded"; every `TODO` in the Day 15 report replaced by a final state; the size gate met by splitting the
   docs into three PRs.
+- Simulated peer review (a fresh Claude instance given only the pages) of the PR #11 walkthrough and the demo run-sheet:
+  8 findings, all fixed; it also surfaced that Docker holds the API only (no frontend host), now stated in the reports.
+  A simulation: it does not count as a real peer or as the demo.
 - Not done, because each needs the author: plan-mode diff-comment steering, sharing the walkthrough with a peer, the
   10-minute demo, a real partner's Day 3 feedback, and approving a permission prompt from the phone.
 
